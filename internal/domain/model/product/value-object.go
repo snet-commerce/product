@@ -3,7 +3,7 @@ package product
 type State int
 
 const (
-	StateDraft = iota
+	StateDraft State = iota
 	StateActive
 	StateArchived
 )

@@ -2,14 +2,15 @@ package product
 
 import (
 	"errors"
+	"time"
+
 	"github.com/snet-commerce/product/internal/domain/model/valueobj"
 	"github.com/snet-commerce/product/internal/domain/model/variant"
-	"time"
 
 	"github.com/google/uuid"
 )
 
-// TODO: think of pointers and error handling
+// TODO: think of pointers and error handling + think of reactive validation
 
 type Product struct {
 	id          uuid.UUID
