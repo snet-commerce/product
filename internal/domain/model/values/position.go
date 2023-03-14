@@ -1,4 +1,4 @@
-package valueobj
+package values
 
 import "fmt"
 

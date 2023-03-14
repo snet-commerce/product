@@ -4,23 +4,22 @@ import (
 	"errors"
 	"time"
 
-	"github.com/snet-commerce/product/internal/domain/model/valueobj"
-	"github.com/snet-commerce/product/internal/domain/model/variant"
-
 	"github.com/google/uuid"
+
+	"github.com/snet-commerce/product/internal/domain/model/values"
+	"github.com/snet-commerce/product/internal/domain/model/variant"
 )
 
 // TODO: think of pointers and error handling + think of reactive validation
 
 type Product struct {
 	id          uuid.UUID
+	number      string
 	name        string
 	description string
 	state       State
-	createdAt   time.Time
-	updatedAt   time.Time
 	publishedAt time.Time
-	metadata    valueobj.Metadata
+	metadata    values.Metadata
 	variants    []*variant.ProductVariant
 }
 
