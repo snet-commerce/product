@@ -10,25 +10,33 @@ import (
 	"github.com/snet-commerce/product/internal/domain/model/variant"
 )
 
-// TODO: think of pointers and error handling + think of reactive validation
-
 type Product struct {
 	id          uuid.UUID
-	number      string
+	number      values.ProductNumber
 	name        string
 	description string
 	state       State
 	publishedAt time.Time
 	metadata    values.Metadata
+	options     []values.ProductOption
 	variants    []*variant.ProductVariant
 }
 
-func (p *Product) Activate() error {
-	if p.state != StateDraft {
-		return errors.New("only draft product can be activated")
-	}
-	p.state = StateActive
-	return nil
+func NewProduct(
+	number values.ProductNumber,
+	name string,
+	description string,
+) (*Product, error) {
+	return &Product{
+		id:          uuid.New(),
+		number:      number,
+		name:        name,
+		description: description,
+		state:       0,
+		publishedAt: time.Time{},
+		metadata:    nil,
+		variants:    nil,
+	}, nil
 }
 
 func (p *Product) Archive() error {

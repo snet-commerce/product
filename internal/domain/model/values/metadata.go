@@ -4,15 +4,20 @@ import (
 	"errors"
 )
 
+type MetadataProperty struct {
+	Key   string
+	Value string
+}
+
 type Metadata map[string]string
 
-func MetadataFromMap(m map[string]string) (Metadata, error) {
+func NewMetadata(props ...MetadataProperty) (Metadata, error) {
 	meta := make(Metadata)
-	for k, v := range m {
-		if k == "" || v == "" {
+	for _, prop := range props {
+		if prop.Key == "" || prop.Value == "" {
 			return nil, errors.New("metadata property and its value can't be empty")
 		}
-		meta[k] = v
+		meta[prop.Key] = prop.Value
 	}
 	return meta, nil
 }
