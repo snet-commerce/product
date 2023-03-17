@@ -5,6 +5,7 @@ import (
 	"time"
 
 	"github.com/google/uuid"
+	"github.com/snet-commerce/list"
 
 	"github.com/snet-commerce/product/internal/domain/model/values"
 	"github.com/snet-commerce/product/internal/domain/model/variant"
@@ -17,9 +18,9 @@ type Product struct {
 	description string
 	state       State
 	publishedAt time.Time
-	metadata    values.Metadata
 	options     []values.ProductOption
-	variants    []*variant.ProductVariant
+	variants    *list.List[*variant.ProductVariant]
+	metadata    values.Metadata
 }
 
 func NewProduct(

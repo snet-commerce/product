@@ -14,3 +14,7 @@ func NewProductNumber(number string) (ProductNumber, error) {
 	}
 	return ProductNumber(number), nil
 }
+
+func (n ProductNumber) IsPresent() bool {
+	return n != ""
+}
